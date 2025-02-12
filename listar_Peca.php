@@ -32,7 +32,7 @@
                     foreach($pecas as $item):
                       ?>
                       <tr>
-                        <td><?php echo $item->id_peca?></td>
+                        <td><?php echo $item->id?></td>
                         <td><?php echo $item->nome?></td>
                         <td><?php echo $item->modelo_carro?></td>
                         <td><?php echo $item->preco?></td>

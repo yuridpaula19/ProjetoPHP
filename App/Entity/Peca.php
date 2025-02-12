@@ -12,7 +12,7 @@ require './App/DB/Database.php';
 
         public function cadastrar(){
 
-            $db = new Database('peca');
+            $db = new Database('pecas');
 
             $res = $db->insert(
                 [
@@ -27,20 +27,20 @@ require './App/DB/Database.php';
         }
 
         public function listar($where = null, $order = null, $limit = null){
-            $db = new Database('peca');
+            $db = new Database('pecas');
             $res = $db->select($where, $order, $limit)->fetchAll(PDO::FETCH_CLASS,self::class);
             return $res;
         }
         public function listar_por_id($id){
-            $db = new Database('peca');
-            $res = $db->select('id_peca = ' . $id)->fetchObject(self::class);
+            $db = new Database('pecas');
+            $res = $db->select('id = ' . $id)->fetchObject(self::class);
             return $res;
         }
 
         public function atualizar(){
-            $db = new Database('peca');
+            $db = new Database('pecas');
             $res = $db->update(
-                'id_peca = ' . $this->id_peca,
+                'id = ' . $this->id_peca,
                 [
                     'nome' => $this->nome,
                     'modelo_carro' => $this->modelo_carro,
@@ -52,8 +52,8 @@ require './App/DB/Database.php';
         }
 
         public function excluir(){
-            $db = new Database('peca');
-            $res = $db->delete('id_peca = ' . $this->id_peca);
+            $db = new Database('pecas');
+            $res = $db->delete('id = ' . $this->id_peca);
             return $res;
         }
 

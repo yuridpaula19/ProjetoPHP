@@ -1,10 +1,16 @@
 <?php
     class Database{
         private $conn;
-        private String $local="10.28.1.149";
+        // private String $local="10.28.1.149";
+        // private string $db="ManuMaster";
+        // private string $user="devweb";
+        // private string $password="suporte@22";
+        // private string $table;
+
+        private String $local="localhost";
         private string $db="ManuMaster";
-        private string $user="devweb";
-        private string $password="suporte@22";
+        private string $user="root";
+        private string $password="4321";
         private string $table;
 
         function __construct($tabela = null){
@@ -102,4 +108,6 @@
         }
 
     }
+
+    $db = new Database('pecas');
 ?>

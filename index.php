@@ -1,48 +1,45 @@
-<?php
-    require './App/Entity/Peca.php';
-
-    if(isset($_POST['cadastrar'])){
-
-        $descricao = $_POST['descricao'];
-        $cor = $_POST['cor'];
-        $icone = $_POST['icone'];
-
-        // $cat = new Peca();
-        // $cat->descricao = $descricao;
-        // $cat->cor = $cor;
-        // $cat->icone = $icone;
-
-        $res = $cat->cadastrar();
-
-        if($res){
-            echo '<script> alert("Cadastrado com sucesso")</script>';
-        }else{
-            echo '<script> alert("Erro ao cadastrar") </script>';
-        }
-    }
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menu de Cadastro ✔</title>
+    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <h1>Cadastro de Categorias</h1>
-    <form action="" method="post">
-        <input type="text" name="descricao" id="descricao" placeholder="Digite sua descricao">
-        <br>
-        <input type="text" name="cor" id="cor" placeholder="Digite a cor">
-        <br>
-        <input type="text" name="icone" id="icone" placeholder="Digite seu icone">
-        <br>
-        <select name="" id="">
-            <option value="">Selecione a opção a ser cadastrada</option>
-            <option value="">Peca</option>
-            <option value="">Fornecedor</option>
+    <h1>Tela de Cadastro</h1>
+    <form action="./Controller/processaCadastro.php" method="post">
+        <label for="selecao">Selecione a opção a ser cadastrada:</label>
+        <select name="tipo" id="selecao" onchange="mostrarCampos()" required>
+            <option value="">Selecione...</option>
+            <option value="Peca">Peça</option>
+            <option value="Fornecedor">Fornecedor</option>
         </select>
-        <input type="submit" name="cadastrar" value="Cadastrar">
+
+        <div id="camposPeca" style="display: none;">
+            <h3>Cadastro de Peça</h3>
+            <input type="text" name="nome" placeholder="Nome da Peça" required>
+            <br>
+            <input type="text" name="modelo_carro" placeholder="Modelo do Carro" required>
+            <br>
+            <input type="text" step="0.01" name="preco" placeholder="Preço" required>
+            <br>
+            <input type="number" name="estoque" placeholder="Estoque" required>
+            <br>
+            <input type="submit" name="cadastrar" value="Cadastrar">
+        </div>
+
+        <div id="camposFornecedor" style="display: none;">
+            <h3>Cadastro de Fornecedor</h3>
+            <input type="text" name="nome_fornecedor" placeholder="Nome do Fornecedor" required>
+            <br>
+            <input type="text" name="telefone" placeholder="Telefone" required>
+            <br>
+            <input type="email" name="email" placeholder="Email" required>
+            <br>
+            <input type="submit" name="cadastrar" value="Cadastrar">
+        </div>
     </form>
 </body>
 </html>
